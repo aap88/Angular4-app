@@ -1,32 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-
-import { MyserviceService } from './myservice.service';
-import { NewCmpComponent } from './new-cmp/new-cmp.component';
-import { ChangeTextDirective } from './change-text.directive';
-import { SqrtPipe } from './app.sqrt';
 
 @NgModule({
   declarations: [
-    SqrtPipe,
-    AppComponent,
-    NewCmpComponent,
-    ChangeTextDirective
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule,
-    FormsModule,
-    RouterModule.forRoot([
-      { path: 'new-cmp', component: NewCmpComponent }
-    ])
+    BrowserAnimationsModule,
+    HttpModule
   ],
-  providers: [MyserviceService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
