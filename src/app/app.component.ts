@@ -8,10 +8,12 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private http:Http) { }
+  constructor(private http: Http) { }
+  httpdata;
   ngOnInit() {
     this.http.get("http://jsonplaceholder.typicode.com/users").
     map((response) => response.json()).
-    subscribe((data) => console.log(data))    
+    subscribe((data) => {this.displaydata(data);})    
   }
+  displaydata(data) {this.httpdata = data;}
 }
