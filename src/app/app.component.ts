@@ -8,12 +8,18 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title = 'App';
+  searchparam = 2;
+  jsondata;
+  name;
   constructor(private http: Http) { }
-  httpdata;
   ngOnInit() {
-    this.http.get("http://jsonplaceholder.typicode.com/users").
+    this.http.get("http://jsonplaceholder.typicode.com/users?id="+this.searchparam).
     map((response) => response.json()).
-    subscribe((data) => {this.displaydata(data);})    
+    subscribe((data) => this.converttoarray(data))    
   }
-  displaydata(data) {this.httpdata = data;}
+  converttoarray(data) {
+    console.log(data);
+    this.name = data[0].name;
+  }
 }
