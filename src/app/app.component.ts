@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { MyserviceService} from './myservice.service';
 
 @Component({
   selector: 'app-root',
@@ -8,18 +7,14 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'App';
-  searchparam = 2;
-  jsondata;
-  name;
-  constructor(private http: Http) { }
+  title = 'Angular 4 Project!';
+  todaydate;
+  componentproperty;
+  constructor(private myservice: MyserviceService) { }
   ngOnInit() {
-    this.http.get("http://jsonplaceholder.typicode.com/users?id="+this.searchparam).
-    map((response) => response.json()).
-    subscribe((data) => this.converttoarray(data))    
+    this.todaydate = this.myservice.showTodayDate();
   }
-  converttoarray(data) {
-    console.log(data);
-    this.name = data[0].name;
+  onClickSubmit(data) {
+    alert("Entered Email id : " + data.emailid);
   }
 }
